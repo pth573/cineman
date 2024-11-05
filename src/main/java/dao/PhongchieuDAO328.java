@@ -51,8 +51,10 @@ public class PhongchieuDAO328 extends DAO {
                 "    FROM Lichchieu328 lc " +
                 "    WHERE p.id = lc.phongchieu328id " +
                 "      AND ( " +
-                "          (lc.ngaygiobatdau >= ? AND lc.ngaygioketthuc < ?) " +
-                "          OR (lc.ngaygiobatdau < ? AND lc.ngaygioketthuc >= ?) " +
+                "          (lc.ngaygiobatdau >= ? AND lc.ngaygioketthuc >= ?) " +
+                "          OR (lc.ngaygiobatdau <= ? AND lc.ngaygioketthuc >= ?) " +
+                "          OR (lc.ngaygiobatdau <= ? AND lc.ngaygioketthuc >= ?) " +
+                "          OR (lc.ngaygiobatdau > ? AND lc.ngaygioketthuc <= ?) " +
                 "      ) " +
                 ")";
 
@@ -61,6 +63,11 @@ public class PhongchieuDAO328 extends DAO {
             pstmt.setString(2, ngaygioketthuc);
             pstmt.setString(3, ngaygiobatdau);
             pstmt.setString(4, ngaygioketthuc);
+            pstmt.setString(5, ngaygiobatdau);
+            pstmt.setString(6, ngaygioketthuc);
+            pstmt.setString(7, ngaygiobatdau);
+            pstmt.setString(8, ngaygioketthuc);
+
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
